@@ -1,0 +1,43 @@
+
+{% block content %}
+
+{% if distance %}
+    <h1>Last location {{ endingLocation }}</h1>
+    <h1>Last distance {{ distance }}</h1>
+{% else %}
+    <h1>Submit your mileage</h1>
+    <br/>
+    <form method="POST">
+        {{ mileageForm.hidden_tag() }}
+        
+        {{ mileageForm.startingLocation.label }}
+        {{ mileageForm.startingLocation() }}
+        <br/>
+        {{ mileageForm.endingLocation.label }}
+        {{ mileageForm.endingLocation() }}
+        <br/>
+        {{ mileageForm.submit() }}
+    </form>
+    <br/>
+{% endif %}
+
+{% if locationName %}
+    <h1>You have added: {{ locationName }}</h1>
+    <h1>With the address: {{ locationAddr }}</h1>
+{% else %}
+    <h1>Add new location</h1>
+    <br/>
+    <form method="POST">
+        {{ locationForm.hidden_tag() }}
+
+        {{ locationForm.locationName.label }}
+        {{ locationForm.locationName() }}
+        <br/>
+        {{ locationForm.locationAddr.label }}
+        {{ locationForm.locationAddr() }}
+        <br/>
+        {{ locationForm.submit2() }}
+    </form>
+{% endif %}
+
+{% endblock %}
